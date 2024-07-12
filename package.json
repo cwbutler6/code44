@@ -1,0 +1,14 @@
+{
+  "name": "code44",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:cms": "pnpm --filter cms run dev",
+    "dev:frontend": "pnpm --filter frontend run dev",
+    "dev": "pnpm run --parallel -r dev",
+    "build:cms": "pnpm --filter cms run build",
+    "build:frontend": "pnpm --filter frontend run build",
+    "build": "pnpm run build:cms && pnpm run build:frontend"
+  }
+}
