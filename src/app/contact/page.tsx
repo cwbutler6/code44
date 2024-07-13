@@ -48,8 +48,8 @@ const ContactPage: React.FC = () => {
                 <CardTitle className="text-warm-gold">Contact Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-warm-cream">
-                <p>Address: 123 Elegant Avenue, Luxe City, LC 12345</p>
-                <p>Phone: (555) 123-4567</p>
+                <p>Address: 1856 Harvard Ave, College Park, GA 30337</p>
+                <p>Phone: +1 (770) 325 7661</p>
                 <p>Email: info@code44events.com</p>
               </CardContent>
             </Card>

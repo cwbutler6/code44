@@ -14,8 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <div className="min-h-screen bg-warm-black text-warm-cream">
+      <body className="bg-warm-black text-warm-cream">
+        <div className="min-h-screen">
           <header className="p-4 bg-warm-black flex justify-between items-center">
             <Link href="/" className="text-warm-gold text-lg md:text-xl font-serif">Code 44</Link>
             <nav>
