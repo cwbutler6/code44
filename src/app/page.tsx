@@ -112,10 +112,11 @@ export default LandingPage;
 
 async function getData() {
   const host = process.env.NEXT_PUBLIC_API_URL;
+  const port = process.env.PORT;
   try {
     const [eventPackagesRes, testimonialsRes] = await Promise.all([
-      fetch(`${host}/api/event-packages`),
-      fetch(`${host}/api/testimonials`)
+      fetch(`${host}:${port}/api/event-packages`),
+      fetch(`${host}:${port}/api/testimonials`)
     ])
 
     if (!eventPackagesRes.ok || !testimonialsRes.ok) {
