@@ -7,10 +7,8 @@ async function getGalleryData(): Promise<{
   galleryItems: GalleryItem[] | null; 
   error?: string 
 }> {
-  const apiURL = process.env.NEXT_PUBLIC_API_URL
-
   try {
-    const response = await fetch(`${apiURL}/gallery-items`)
+    const response = await fetch(`/api/gallery-items`)
 
     if (!response.ok) {
       throw new Error('Failed to fetch gallery data from CMS')

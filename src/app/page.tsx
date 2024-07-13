@@ -111,11 +111,10 @@ const LandingPage: React.FC = async () => {
 export default LandingPage;
 
 async function getData() {
-  const apiHost = process.env.NEXT_PUBLIC_API_URL
   try {
     const [eventPackagesRes, testimonialsRes] = await Promise.all([
-      fetch(`${apiHost}/event-packages`),
-      fetch(`${apiHost}/testimonials`)
+      fetch(`/api/event-packages`),
+      fetch(`/api/testimonials`)
     ])
 
     if (!eventPackagesRes.ok || !testimonialsRes.ok) {
