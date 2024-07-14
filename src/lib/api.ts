@@ -1,4 +1,4 @@
-import { EventPackage, Testimonial } from "@/payload-types";
+import { EventPackage, GalleryItem, Testimonial } from "@/payload-types";
 import { headers } from "next/headers";
 
 function getOrigin() {
@@ -32,5 +32,28 @@ export async function fetchHomePageData() {
   } catch (error) {
     console.error('Error fetching data:', error)
     return { error: 'Failed to load page data' }
+  }
+}
+
+export async function getGalleryData(): Promise<{ 
+  galleryItems: GalleryItem[] | null; 
+  error?: string 
+}> {
+  try {
+    const origin = getOrigin();
+    const response = await fetch(`${origin}/api/gallery-items`)
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch gallery data from CMS')
+    }
+
+    const data = await response.json()
+
+    return {
+      galleryItems: data.docs
+    }
+  } catch (error) {
+    console.error('Error fetching gallery data:', error)
+    return { galleryItems: null, error: 'Failed to load gallery data' }
   }
 }
