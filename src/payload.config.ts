@@ -12,7 +12,8 @@ import { Media } from './collections/Media'
 import EventPackages from './collections/EventPackages'
 import GalleryItems from './collections/GalleryItems'
 import Testimonials from './collections/Testimonials'
-import ContactInfo from './globals/ContactInfo'
+import FAQ from './collections/Faq'
+import Settings from './globals/Settings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,8 +22,8 @@ export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  collections: [Users, Media, EventPackages, GalleryItems, Testimonials],
-  globals: [ContactInfo],
+  collections: [Users, Media, EventPackages, GalleryItems, Testimonials, FAQ],
+  globals: [Settings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

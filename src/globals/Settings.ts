@@ -1,6 +1,6 @@
-import { CollectionConfig } from "payload";
+import { GlobalConfig } from "payload";
 
-const Settings: CollectionConfig = {
+const Settings: GlobalConfig = {
   slug: 'settings',
   fields: [
     {

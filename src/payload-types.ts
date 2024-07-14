@@ -16,11 +16,12 @@ export interface Config {
     'event-packages': EventPackage;
     'gallery-items': GalleryItem;
     testimonials: Testimonial;
+    faq: Faq;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
   globals: {
-    'contact-info': ContactInfo;
+    settings: Setting;
   };
   locale: null;
   user: User & {
@@ -124,6 +125,31 @@ export interface Testimonial {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq".
+ */
+export interface Faq {
+  id: number;
+  question: string;
+  answer: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
@@ -158,13 +184,22 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contact-info".
+ * via the `definition` "settings".
  */
-export interface ContactInfo {
+export interface Setting {
   id: number;
+  siteName: string;
+  logo?: number | Media | null;
+  contactEmail?: string | null;
+  contactPhone?: string | null;
   address?: string | null;
-  phone?: string | null;
-  email?: string | null;
+  socialLinks?:
+    | {
+        platform?: ('facebook' | 'instagram' | 'twitter') | null;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
