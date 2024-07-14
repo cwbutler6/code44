@@ -4,10 +4,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Link from 'next/link';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
-import { EventPackage, Testimonial } from '@/payload-types';
+import { fetchHomePageData } from '@/lib/api';
 
 const LandingPage: React.FC = async () => {
-  const { eventPackages, testimonials, error } = await getData()
+  const { eventPackages, testimonials, error } = await fetchHomePageData()
   if (error) {
     return (
       <div className="min-h-screen bg-warm-black text-warm-cream flex items-center justify-center">
@@ -109,29 +109,3 @@ const LandingPage: React.FC = async () => {
 };
 
 export default LandingPage;
-
-async function getData() {
-  const host = process.env.NEXT_PUBLIC_API_URL;
-  const port = process.env.PORT;
-  try {
-    const [eventPackagesRes, testimonialsRes] = await Promise.all([
-      fetch(`${host}:${port}/api/event-packages`),
-      fetch(`${host}:${port}/api/testimonials`)
-    ])
-
-    if (!eventPackagesRes.ok || !testimonialsRes.ok) {
-      throw new Error('Failed to fetch data from CMS')
-    }
-
-    const eventPackages = await eventPackagesRes.json()
-    const testimonials = await testimonialsRes.json()
-
-    return {
-      eventPackages: eventPackages.docs as EventPackage[],
-      testimonials: testimonials.docs as Testimonial[],
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error)
-    return { error: 'Failed to load page data' }
-  }
-}
