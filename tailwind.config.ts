@@ -19,28 +19,29 @@ const config = {
     },
     extend: {
       colors: {
-        'warm-black': '#080706',
-        'warm-gold': '#D4AF37',
-        'warm-cream': '#FAF9F6',
-        'warm-red': '#8B4513',
+        primary: '#1A1A1A',    // Rich black
+        secondary: '#CC0000',  // Deep red
+        accent: '#D4AF37',     // Metallic gold
+        white: '#FFFFFF',
+        gray: {
+          100: '#F5F5F5',
+          200: '#E5E5E5',
+          300: '#D4D4D4',
+          400: '#A3A3A3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
+        }
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
+        sans: ['var(--font-playfair)', 'serif'],
+        serif: ['var(--font-montserrat)', 'sans-serif'],
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
+      boxShadow: {
+        'luxe': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
